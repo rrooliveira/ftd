@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route Clientes
+Route::get('clientes', ['uses' => 'ClientesController@exibirTodos']);
