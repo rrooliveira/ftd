@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route Clientes
+Route::get('/clientes', 		['uses' => 'ClientesController@exibirTodos']);
+Route::get('/clientes/{id}',    ['uses' => 'ClientesController@exibirCliente']);
+Route::post('/clientes', 	    ['uses' => 'ClientesController@cadastrarCliente']);
+Route::put('/clientes/{id}',    ['uses' => 'ClientesController@atualizarCliente']);
+Route::delete('/clientes/{id}', ['uses' => 'ClientesController@deletarCliente']);
+
