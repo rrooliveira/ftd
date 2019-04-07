@@ -10,7 +10,7 @@ class EnderecosController extends Controller
 {
      public function exibirTodos()
     {
-        return response()->json(Enderecos::all());
+        return response()->json(Enderecos::all(),200);
     }
 
     public function exibirEndereco($id)
@@ -25,7 +25,6 @@ class EnderecosController extends Controller
             'cep' 		 => 'required',
             'logradouro' => 'required',
             'numero'     => 'required',
-            'complemento'=> 'required',
             'uf'         => 'required'
         ]);
 
@@ -47,7 +46,7 @@ class EnderecosController extends Controller
             $endereco = Enderecos::create($data);
             return response()->json($endereco, 201);
         }else{
-        	return response()->json(['Error' => 'O c&oacute;digo do cliente informado n&atilde;o existe!', 'Codigo' => '002'], 200);
+        	return response()->json(['Error' => 'O c&oacute;digo do cliente informado n&atilde;o existe!', 'Codigo' => '002'], 400);
         }
     }
 

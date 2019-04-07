@@ -23,7 +23,7 @@ class ClientesController extends Controller
     	
         $this->validate($request, [
             'nome' => 'required',
-            'email' => 'required'
+            'email' => 'required|email'
         ]);
 
         $cliente = Clientes::create($request->all());
@@ -51,49 +51,13 @@ class ClientesController extends Controller
         $id = (int) $id;
 
         //Verifica se o cliente tem endereço
-        //$temEndereco = Endereco::where('idCliente',$id)->count();
-        $temEndereco = true;
+        $temEndereco = Endereco::where('id_cliente',$id)->count();
 
         if(!$temEndereco){
             Clientes::findOrFail($id)->delete();
             return response()->json(['Msg' => 'Cliente excluído com sucesso!','Codigo' => '001'], 200);
         }else{
-            return response()->json(['Error' => 'É necessário apagar primeiro o endereço!', 'Codigo' => '002'], 200);
+            return response()->json(['Error' => 'É necessário apagar primeiro o endereço!', 'Codigo' => '002'], 400);
         }
     }
-
-    protected function convertToArray($result)
-    {
-        $arrayPerson = null;
-        $idPerson = null;       
-        
-        $i = 0;
-        foreach ($result as $data){
-            if($data->id != $idPerson){
-                $arrayPerson[$data->id]['id']                        = $data->id;
-                $arrayPerson[$data->id]['name']                      = $data->name;
-                $arrayPerson[$data->id]['lastname']                  = $data->lastName;
-                $arrayPerson[$data->id]['birthDate']                 = $data->birthDate;
-                $arrayPerson[$data->id]['Address'][$i]['id']         = $data->id_Address;
-                $arrayPerson[$data->id]['Address'][$i]['postalCode'] = $data->postalCode;
-                $arrayPerson[$data->id]['Address'][$i]['address']    = $data->address;
-                $arrayPerson[$data->id]['Address'][$i]['complement'] = $data->complement;
-                $arrayPerson[$data->id]['Address'][$i]['state']      = $data->state;
-                $arrayPerson[$data->id]['Address'][$i]['country']    = $data->country;
-            }else{
-                $arrayPerson[$data->id]['Address'][$i]['id']         = $data->id_Address;
-                $arrayPerson[$data->id]['Address'][$i]['postalCode'] = $data->postalCode;
-                $arrayPerson[$data->id]['Address'][$i]['address']    = $data->address;
-                $arrayPerson[$data->id]['Address'][$i]['address']    = $data->address;
-                $arrayPerson[$data->id]['Address'][$i]['complement'] = $data->complement;
-                $arrayPerson[$data->id]['Address'][$i]['state']      = $data->state;
-                $arrayPerson[$data->id]['Address'][$i]['country']    = $data->country;
-            }
-
-            $i++;
-            $idPerson = $data->id;
-        }
-        return $arrayPerson;
-    }
-
 }
