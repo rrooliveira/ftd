@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Enderecos;
 use App\Clientes;
 
@@ -10,12 +11,23 @@ class EnderecosController extends Controller
 {
      public function exibirTodos()
     {
-        return response()->json(Enderecos::all(),200);
+        if ($enderecos = Redis::get('enderecos.todos')) {
+            return json_decode($enderecos, 200);
+        }
+ 
+        // Retorna todos os clientes
+        $enderecos = Enderecos::all();
+        
+        // Armazena os dados no Redis no período de 24 horas
+        Redis::setex('enderecos.todos', 60 * 60 * 24, $enderecos);
+     
+        // Retorna todos os clientes
+        return response()->json($enderecos, 200);
     }
 
     public function exibirEndereco($id)
     {
-        return response()->json(Enderecos::find($id));
+        return response()->json(Enderecos::find($id), 200);
     }
 
     public function cadastrarEndereco(Request $request)

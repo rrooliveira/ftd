@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Clientes;
 
 class ClientesController extends Controller
@@ -10,12 +11,26 @@ class ClientesController extends Controller
 	//Método para exibir todos os clientes
     public function exibirTodos()
     {
-        return response()->json(Clientes::all());
+        if ($clientes = Redis::get('clientes.todos')) {
+            return json_decode($clientes);
+        }
+ 
+        // Retorna todos os clientes
+        $clientes = Clientes::all();
+     
+        // Armazena no Redis
+        //Redis::set('clientes.todos', $clientes);
+        
+        // Armazena os dados no Redis no período de 24 horas
+        Redis::setex('clientes.todos', 60 * 60 * 24, $clientes);
+     
+        // Retorna todos os clientes
+        return response()->json($clientes, 200);
     }
 
     public function exibirCliente($id)
     {
-        return response()->json(Clientes::find($id));
+        return response()->json(Clientes::find($id) , 200);
     }
 
     public function cadastrarCliente(Request $request)

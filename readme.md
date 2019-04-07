@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
- - O projeto é uma API para o cadastro de clientes e seus repectivos endereços.
+ - O projeto é uma API que realiza o CRUD referente ao cadastro de clientes e seus repectivos endereços. O retorno das consultas é em formato JSON.
  - Framework Laravel
 
 ## Etapas do projeto
@@ -21,6 +21,14 @@
 - post 	 - /api/enderecos - cadastrar um novo cliente
 - delete - /api/enderecos/{id} - deletar um cliente. Somente se o mesmo não tiver um endereço cadastrado
 - put 	 - /api/enderecos/{id} - atualizar os dados do cliente
+
+3 - Criação das migrations e seeds
+
+4 - Cache de dados utilizando o Redis
+
+5 - Testes unitários
+
+6 - Publicação do projeto no Heroku
 
 ## Contato
 
