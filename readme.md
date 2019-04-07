@@ -1,4 +1,4 @@
-<p align="center">Projeto FTD</p>
+<p align="center">Projeto API - FTD</p>
 
 ## Sobre o projeto
 
