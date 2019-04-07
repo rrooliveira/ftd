@@ -24,3 +24,10 @@ Route::post('/clientes', 	    ['uses' => 'ClientesController@cadastrarCliente'])
 Route::put('/clientes/{id}',    ['uses' => 'ClientesController@atualizarCliente']);
 Route::delete('/clientes/{id}', ['uses' => 'ClientesController@deletarCliente']);
 
+//Route Enderecos
+Route::get('enderecos',  	   	['uses' => 'EnderecosController@exibirTodos']);
+Route::get('enderecos/{id}', 	['uses' => 'EnderecosController@exibirEndereco']);
+Route::post('enderecos', 	   	['uses' => 'EnderecosController@cadastrarEndereco']);
+Route::put('enderecos/{id}', 	['uses' => 'EnderecosController@atualizarEndereco']);
+Route::delete('enderecos/{id}', ['uses' => 'EnderecosController@deletarEndereco']);
+

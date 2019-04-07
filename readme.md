@@ -9,17 +9,21 @@
 
 - Desenvolvimento do método get /clientes, para retornar todos os clientes cadastrados
  
-1.1 Desenvolvimento dos metódos:
+1 - Desenvolvimento dos metódos:
 - get 	 - /api/clientes/{id} - consultar por id
 - post 	 - /api/clientes - cadastrar um novo cliente
 - delete - /api/clientes/{id} - deletar um cliente. Somente se o mesmo não tiver um endereço cadastrado
 - put 	 - /api/clientes/{id} - atualizar os dados do cliente
 
-2 - Desenvolvimento do método get /enderecos, para retornar todos os endereços de de todos os clientes
-
+2 - Desenvolvimento dos métodos referente aos endereços dos clientes
+- get	 - /api/enderecos - retorar todos os endereços cadastrados
+- get 	 - /api/enderecos/{id} - consultar por id
+- post 	 - /api/enderecos - cadastrar um novo cliente
+- delete - /api/enderecos/{id} - deletar um cliente. Somente se o mesmo não tiver um endereço cadastrado
+- put 	 - /api/enderecos/{id} - atualizar os dados do cliente
 
 ## Contato
 
-Rodrigo Ruy Oliveira
-E-mail: rro.oliveira@gmail.com
+- Rodrigo Ruy Oliveira
+- E-mail: rro.oliveira@gmail.com
 
