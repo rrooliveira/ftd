@@ -11,7 +11,6 @@ class EnderecosController extends Controller
 {
      public function exibirTodos()
     {
-    	/*
         if ($enderecos = Redis::get('enderecos.todos')) {
             return json_decode($enderecos, 200);
         }
@@ -21,9 +20,9 @@ class EnderecosController extends Controller
         
         // Armazena os dados no Redis no período de 24 horas
         Redis::setex('enderecos.todos', 60 * 60 * 24, $enderecos);
-     	*/
+     
         // Retorna todos os clientes
-        return response()->json(Enderecos::all(), 200);
+        return response()->json($enderecos, 200);
     }
 
     public function exibirEndereco($id)
