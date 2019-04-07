@@ -20,7 +20,7 @@ class CreateEnderecosTable extends Migration
             $table->string('cep', 8)->nullable($value = false);
             $table->string('logradouro', 80)->nullable($value = false);
             $table->integer('numero')->nullable($value = false);
-            $table->string('complemento', 50)->nullable($value = false);
+            $table->string('complemento', 50)->nullable($value = true);
             $table->string('uf', 2)->nullable($value = false);
             $table->timestamps();
         });
