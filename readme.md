@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
- - O projeto é uma API que realiza o CRUD referente ao cadastro de clientes e seus repectivos endereços. O retorno das consultas é em formato JSON.
+ - O projeto é uma API que realiza o CRUD referente ao cadastro de livros. O retorno das consultas é em formato JSON.
  - Framework Laravel
 
 ## Etapas do projeto
