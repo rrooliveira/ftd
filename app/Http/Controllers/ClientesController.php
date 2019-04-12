@@ -11,6 +11,8 @@ class ClientesController extends Controller
 	//Método para exibir todos os clientes
     public function exibirTodos()
     {
+        //DESCOMENTE PARA UTILIZAR COM O REDIS
+        /*
         if ($clientes = Redis::get('clientes.todos')) {
             return json_decode($clientes);
         }
@@ -24,6 +26,12 @@ class ClientesController extends Controller
         // Armazena os dados no Redis no período de 24 horas
         Redis::setex('clientes.todos', 60 * 60 * 24, $clientes);
      
+        // Retorna todos os clientes
+        return response()->json($clientes, 200);
+        */
+
+         // Retorna todos os clientes
+        $clientes = Clientes::all();
         // Retorna todos os clientes
         return response()->json($clientes, 200);
     }

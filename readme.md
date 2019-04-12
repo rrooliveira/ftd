@@ -7,24 +7,42 @@
 
 ## Etapas do projeto
 
-- Desenvolvimento do método get /clientes, para retornar todos os clientes cadastrados
+1 - Desenvolvimento da API RESTFULL referente aos livros
+
+- get 	 - /api/livros - consultar todos os livros
+- get 	 - /api/livros/{isbn} - consultar um livro por isbn
+- post 	 - /api/livros - cadastrar um livro. Informar (isbn, title, cover, author, level, discipline e price)
+- delete - /api/livros/{id} - deletar um livro.
+- put 	 - /api/livros/{id} - atualizar os dados do livro
+
+## Plus 
+- Desenvolvimento da API RESTFULL referente aos clientes
  
+<<<<<<< HEAD
 1 - Desenvolvimento dos metódos:
 - get 	 - /api/clientes/{id} - consultar por id
 - post 	 - /api/clientes - cadastrar um novo cliente. Parâmetros (nome e email)
+=======
+- get 	 - /api/clientes/{id} - consultar cliente por id
+- post 	 - /api/clientes - cadastrar um novo cliente
+>>>>>>> release
 - delete - /api/clientes/{id} - deletar um cliente. Somente se o mesmo não tiver um endereço cadastrado
 - put 	 - /api/clientes/{id} - atualizar os dados do cliente
 
-2 - Desenvolvimento dos métodos referente aos endereços dos clientes
+- Desenvolvimento da API RESTFULL referente aos endereços dos clientes
 - get	 - /api/enderecos - retorar todos os endereços cadastrados
 - get 	 - /api/enderecos/{id} - consultar endereço por id
+<<<<<<< HEAD
 - post 	 - /api/enderecos - cadastrar um novo endereço. Parâmetros (id_cliente, cep, logradouro, numero, complemento e uf). Cadastrar somente se o id_cliente informado for válido.
+=======
+- post 	 - /api/enderecos - cadastrar um novo endereço
+>>>>>>> release
 - delete - /api/enderecos/{id} - deletar um endereço
 - put 	 - /api/enderecos/{id} - atualizar os dados do endereço
 
 3 - Criação das migrations e seeds
 
-4 - Cache de dados utilizando o Redis
+4 - Cache de dados utilizando o Redis (Necessário descomentar o código nos controllers quando o Redis tiver instalado.)
 
 5 - Testes unitários
 
